@@ -1,0 +1,40 @@
+<div class="side-cont" [style.height]="windowHeight + 'px'">
+  <div>
+    <img class="photo fadeInDown" src="../../../assets/img/photo.jpg" alt="img" />
+    <div class="info zoomIn">
+      <p class="name">{{usrData.username}}</p>
+      <p class="message">{{usrData.message}}</p>
+      <p>陈硕 / 男 / 20岁 / 大三</p>
+      <p>专业: 信息对抗技术</p>
+      <p>学校: 西安电子科技大学(2019届)</p>
+      <ul class="tags">
+        <li *ngFor="let tag of usrData.tags;  index as i" [class]="'tag' + (i+1) ">
+          {{tag}}
+        </li>
+      </ul>
+    </div>
+    <div class="tips fadeInUp" cs-row>
+      <!-- <cs-popover [csTitle]="'Xunfeng--'" [csPlacement]="'top'">
+        <p [style.marginTop]="'10px'" cs-col [csSpan]="24" cs-popover>weChat:{{usrData.wechat}}</p>
+        <ng-template #csTemplate>
+          <img [style.width]="'300px'" src="../../../assets/img/WechatIMG141.jpeg" alt="" />
+        </ng-template>
+      </cs-popover> -->
+      <p [style.marginTop]="'10px'" cs-col [csSpan]="24" >weChat:{{usrData.wechat}}</p>
+      <p cs-col [csSpan]="24" >Phone:{{usrData.phone}}</p>
+      <p [style.marginBottom]="'10px'" cs-col [csSpan]="24">Email:{{usrData.email}}</p>
+      <a [href]="usrData.weibo" cs-col [csSpan]="3"  target="view_window">
+        <img class="tip-icon" src="../../../assets/img/weibo.svg" alt="" />
+      </a>
+      <a [href]="usrData.github" cs-col [csSpan]="3"  target="view_window">
+        <img class="tip-icon" src="../../../assets/img/github.svg" alt="" />
+      </a>
+      <a [href]="usrData.jianshu" cs-col [csSpan]="3"  target="view_window">
+        <img class="tip-icon" src="../../../assets/img/jianshu.svg" alt="" />
+      </a>
+      <a [href]="usrData.facebook" cs-col [csSpan]="3"  target="view_window">
+        <img class="tip-icon" src="../../../assets/img/facebook.svg" alt="" />
+      </a>
+    </div>
+  </div>
+</div>

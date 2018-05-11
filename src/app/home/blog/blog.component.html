@@ -1,0 +1,7 @@
+<div class="blog" cs-row> 
+  <cs-time-line [csSpan]="windowWidth >= 960 ? 20 : 24" [csOffset]="windowWidth >= 960 ? 2 : 0" cs-col>
+      <cs-time-line-item *ngFor="let itm of BlogList; index as i" [xDate]="itm.blog_date">
+        <cs-blog-item [data]="item"></cs-blog-item>
+      </cs-time-line-item>
+    </cs-time-line>
+</div>

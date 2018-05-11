@@ -3,11 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --hmr",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "back:watch": "nodemon --config ./nodemon.json",
+    "back": "ts-node --project tsconfig_back.json ./backend/src/main.ts",
+    "prestart:prod": "tsc",
+    "start:prod": "node dist/main.js"
   },
   "private": true,
   "dependencies": {
@@ -20,15 +24,31 @@
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
+    "@angularclass/hmr": "^2.1.3",
+    "@nestjs/common": "^4.6.6",
+    "@nestjs/core": "^4.6.6",
+    "@nestjs/microservices": "^4.6.6",
+    "@nestjs/swagger": "^1.3.0",
+    "@nestjs/testing": "^4.6.6",
+    "@nestjs/websockets": "^4.6.6",
     "core-js": "^2.5.4",
+    "front-matter": "^2.3.0",
+    "jsonwebtoken": "^8.2.1",
+    "moment": "^2.22.1",
+    "mysql": "^2.15.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "redis": "^2.8.0",
+    "reflect-metadata": "^0.1.12",
     "rxjs": "^6.0.0",
+    "rxjs-compat": "^6.1.0",
+    "typeorm": "^0.2.5",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "^6.0.0",
     "@angular-devkit/build-angular": "~0.6.0",
-    "typescript": "~2.7.2",
     "@angular/cli": "~6.0.0",
+    "@angular/compiler-cli": "^6.0.0",
     "@angular/language-service": "^6.0.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
@@ -41,8 +61,11 @@
     "karma-coverage-istanbul-reporter": "~1.4.2",
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "marked": "^0.3.19",
+    "nodemon": "^1.17.4",
     "protractor": "~5.3.0",
     "ts-node": "~5.0.1",
-    "tslint": "~5.9.1"
+    "tslint": "~5.9.1",
+    "typescript": "~2.7.2"
   }
 }

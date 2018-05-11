@@ -1,0 +1,41 @@
+.home {
+  // background:
+  // linear-gradient(120deg, rgb(253, 255,223), rgba(105, 86, 85, 0.8)),
+  // linear-gradient(90deg, #bbb, rgb(243, 215, 181)),
+  // linear-gradient(-90deg, #e9e9e9, transparent);
+  // background-blend-mode: screen;
+}
+.side {
+  position: fixed;
+  top: 0;
+  text-align: center;  
+  width: 360px;
+  min-width: 360px;
+  border-right: 25px solid transparent;
+  background: #fff;
+  // border-image:url('../assets/img/bull1.svg') 0 120 round;
+}
+.layout {
+  padding-left: 385px;
+  background: #fff;
+  overflow: scroll;
+}
+// .content {
+//   overflow: scroll;
+// }
+@media screen and (max-width: 960px) {
+  .home {
+    display: block;
+    padding-left: 0;
+    height: auto;
+  }
+  .side {
+    position: inherit;
+    display: block;
+    margin: auto;
+    border: 0;
+  }
+  .layout {
+    padding-left: 0;
+  }
+}

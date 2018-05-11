@@ -1,0 +1,123 @@
+.side-cont {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 100%;
+  max-width: 360px;
+   > div {
+     margin-top: -96px;
+   }
+}
+.photo {
+  border-radius: 100%;
+  box-shadow: 0 0 10px;
+  transition: transform 2s;
+  -moz-transition: width 2s, height 2s, -moz-transform 2s;
+  -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+  -o-transition: width 2s, height 2s,-o-transform 2s;
+  &:hover {
+    transform: rotate(360deg);
+  }
+}
+.name {
+  font-size: 24px;
+  color: transparent;
+  background-image: linear-gradient(45deg, rgb(239, 206, 232), rgb(243, 215, 181) 20%,rgb(253, 255, 223) 40%,rgb(218, 249, 202) 60%,rgb(199, 179, 229) 80%,rgb(243, 215, 181) 100%);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 200% 100% !important; 
+  animation: masked-animation 4s linear infinite;
+}
+
+@keyframes masked-animation {
+  0% {
+      background-position: 0  0;
+  }
+  100% {
+      background-position: -100%  0;
+  }
+}
+.message {
+  margin-left: 11.5%;
+  border-bottom: 1px dashed rgb(random() * 255,random() * 255,random() * 255);
+  width: 77%;
+}
+.tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+  margin-top: 8px;
+  padding: 0 20px;
+  // margin-left: 10%;
+  // width: 80%;
+  > li {
+    display: block;
+    margin-top: 8px;
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 0px 8px;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+@for $i from 1 through 6 {
+  $color: rgb(random() * 255,random() * 255,random() * 255);
+  .tag#{$i} { 
+    border-color: rgba($color, .5) !important;
+    color: rgba($color, .5);
+    &:hover {
+      border-color: rgba($color, 1);
+      color: rgba($color, 1);
+    }
+   }
+}
+
+@for $i from 2 through 6 {
+  .tag#{$i} { 
+    margin-left: 16px;
+  }
+}
+
+.tips {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  align-items: flex-start;
+
+  bottom: 1rem;
+  width: 360px;
+  text-align: center;
+}
+.tip-icon {
+  width: 28px;
+  height: 28px;
+  &:hover {
+    border-radius: 100%;
+    box-shadow: 0 0 10px #f3d7ba;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .side-cont {
+     > div {
+      height: auto;
+      margin-top: 0;
+      vertical-align: middle;
+     }
+  }
+  .tips {
+    position: relative;
+    top: 1rem;
+  }
+  .tags {
+    // width: 80%;
+    // margin-left: 10%;
+  }
+}
