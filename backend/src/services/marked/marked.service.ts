@@ -22,19 +22,20 @@ marked.setOptions({
 });
 
 @Component()
+// tslint:disable-next-line:component-class-suffix
 export class MarkedService {
   async markdownFormatting(path) {
-    let result = {
+    const result = {
       attributes: {},
       body: '',
       intro: ''
-    }
+    };
     // 读取文件
     const text = await fs.readFileSync(path, 'utf8');
-    let content = fm(text);
+    const content = fm(text);
     result.attributes = content.attributes;
-    let info = content.body.split('<!--more-->');
-    
+    const info = content.body.split('<!--more-->');
+
     if (info.length === 1) {
       result.body = await marked(info[0]);
     } else {

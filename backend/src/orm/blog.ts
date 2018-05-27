@@ -8,10 +8,10 @@ export class Blog extends BaseEntity {
   @PrimaryGeneratedColumn()
   blogId: number;
 
-  @Column()  
+  @Column()
   blogTitle: string;
 
-  @Column('time')
+  @Column('date')
   blogDate;
 
   @Column()
@@ -45,7 +45,7 @@ class BlogFunc {
 
     if (data.attributes.tags) {
       await data.attributes.tags.map(async itm => {
-        const isTag = await tagFunc.getOne(itm)
+        const isTag = await tagFunc.getOne(itm);
         if (isTag) {
           await getConnection().manager.save(isTag);
           list.push(isTag);
@@ -53,13 +53,13 @@ class BlogFunc {
           const _tag = new Tag();
           _tag.name = itm;
           await getConnection().manager.save(_tag);
-          list.push(_tag);  
+          list.push(_tag);
         }
-      })
+      });
     }
 
     const _blog = new Blog();
-    _blog.blogDate = new Date();
+    _blog.blogDate = new Date().toLocaleDateString();
     _blog.blogIntro = data.intro || 'missing intro';
     _blog.blogTitle = data.attributes.title || 'missing ttile';
     _blog.blogViews = 0;
@@ -74,7 +74,7 @@ class BlogFunc {
     const data = await getRepository(Blog)
       .createQueryBuilder('blog')
       .orderBy('blogId')
-      .leftJoinAndSelect("blog.tags", "tag")
+      .leftJoinAndSelect('blog.tags', 'tag')
       .offset((page - 1) * 5)
       .limit(5)
       .getMany();
@@ -95,7 +95,7 @@ class BlogFunc {
   async getOne(id: number) {
     const data = await getRepository(Blog)
       .createQueryBuilder('blog')
-      .leftJoinAndSelect("blog.tags", "tag")
+      .leftJoinAndSelect('blog.tags', 'tag')
       .where('blogId = :blogId', { blogId: id })
       .getOne();
     return data;

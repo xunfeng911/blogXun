@@ -7,34 +7,34 @@
   // background-blend-mode: screen;
 }
 .side {
-  position: fixed;
-  top: 0;
-  text-align: center;  
-  width: 360px;
-  min-width: 360px;
+  position    : fixed;
+  top         : 0;
+  text-align  : center;
+  width       : 360px;
+  min-width   : 360px;
   border-right: 25px solid transparent;
-  background: #fff;
+  background  : #fff;
   // border-image:url('../assets/img/bull1.svg') 0 120 round;
 }
 .layout {
   margin-left: 360px;
-  background: #fff;
-  overflow: scroll;
+  background : #fff;
+  overflow   : scroll;
 }
 // .content {
 //   overflow: scroll;
 // }
 @media screen and (max-width: 960px) {
   .root {
-    display: block;
+    display     : block;
     padding-left: 0;
-    height: auto;
+    height      : auto;
   }
   .side {
     position: inherit;
-    display: block;
-    margin: auto;
-    border: 0;
+    display : block;
+    margin  : auto;
+    border  : 0;
   }
   .layout {
     margin-left: 0;

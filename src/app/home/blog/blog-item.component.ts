@@ -15,5 +15,7 @@ export class BlogItemComponent implements OnInit   {
   constructor() {
     this.windowWidth = window.screen.width;
   }
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.data);
+  }
 }

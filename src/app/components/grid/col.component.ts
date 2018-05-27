@@ -53,7 +53,6 @@ export class ColComponent implements OnInit, OnChanges {
   @Input() csLg: number | EmbeddedProperty;
   @Input() csXl: number | EmbeddedProperty;
 
-  /** temp solution since no method add classMap to host https://github.com/angular/angular/issues/7289*/
   setClassMap(): void {
     this._classList.forEach(_className => {
       this._renderer.removeClass(this._el, _className);

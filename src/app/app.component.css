@@ -1,0 +1,36 @@
+.root {
+  display: flex;
+}
+
+.side {
+  position: fixed;
+  top: 0;
+  text-align: center;
+  width: 360px;
+  min-width: 360px;
+  border-right: 25px solid transparent;
+  background: #fff;
+}
+
+.layout {
+  margin-left: 360px;
+  background: #fff;
+  overflow: scroll;
+}
+
+@media screen and (max-width: 960px) {
+  .root {
+    display: block;
+    padding-left: 0;
+    height: auto;
+  }
+  .side {
+    position: inherit;
+    display: block;
+    margin: auto;
+    border: 0;
+  }
+  .layout {
+    margin-left: 0;
+  }
+}
