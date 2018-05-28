@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/resume
 /tmp
 /out-tsc
 /uploads
