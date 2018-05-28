@@ -1,10 +1,9 @@
-import { Directive, ElementRef, HostListener, HostBinding } from '@angular/core';
-import { myPhone } from '../../assets/js/unti';
+import { Directive, ElementRef, HostListener, HostBinding, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[csVisualIn]'
 })
-export class VisualInDirective {
+export class VisualInDirective implements OnInit {
   finished: boolean;
   constructor(
     private el: ElementRef,
@@ -22,7 +21,26 @@ export class VisualInDirective {
       }
     });
   }
-  @HostListener('window:load') elementLoadIn() {
+  // @HostListener('window:load') elementLoadIn() {
+  //   this.showAnimate().then(res => {
+  //     if (res === 'show') {
+  //       this.noShow = false;
+  //       this.isAnimate = true;
+  //       this.finished = true;
+  //     }
+  //   });
+  // }
+  // @HostListener('window:pageshow') pageShowIn() {
+  //   console.log('pageshow');
+  //   this.showAnimate().then(res => {
+  //     if (res === 'show') {
+  //       this.noShow = false;
+  //       this.isAnimate = true;
+  //       this.finished = true;
+  //     }
+  //   });
+  // }
+  ngOnInit(): void {
     this.showAnimate().then(res => {
       if (res === 'show') {
         this.noShow = false;
@@ -31,7 +49,6 @@ export class VisualInDirective {
       }
     });
   }
-
   private getOffsetBodyTop(ela) {
     let offsetBodyTop = 0;
     function _getOffsetBodyTop(el) {

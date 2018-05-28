@@ -14,7 +14,8 @@
   },
   "include": [
     "./src/**/*",
-    "./backend/src/**/*"
+    "./backend/src/**/*",
+    "./newBack/src/**/*"
   ],
   "exclude": [
     "node_modules",

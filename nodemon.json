@@ -1,6 +1,6 @@
 {
-  "watch": ["./backend/src"],
+  "watch": ["./newBack/src"],
   "ext": "ts",
   "ignore": ["src/**/*.spec.ts"],
-  "exec": "ts-node --project ./tsconfig_back.json ./backend/src/main.ts"
+  "exec": "ts-node --project ./tsconfig_back.json ./newBack/src/main.ts"
 }
