@@ -8,13 +8,18 @@ export interface BlogItem {
     blog_views: number;
     blog_intro: string;
 }
+export interface PageSet {
+    pageIndex: number;
+    pageSize: number;
+    total: number;
+}
 @Component({
     selector: 'cs-blog',
     template: `
         <div class="blog" cs-row>
         <cs-time-line [csSpan]="windowWidth >= 960 ? 20 : 24" [csOffset]="windowWidth >= 960 ? 2 : 0" cs-col>
             <cs-time-line-item *ngFor="let itm of blogSet.list; index as i" [xDate]="itm.blogDate">
-                <cs-blog-item [data]="item"></cs-blog-item>
+                <cs-blog-item [data]="itm"></cs-blog-item>
             </cs-time-line-item>
             </cs-time-line>
         </div>
@@ -33,11 +38,17 @@ export interface BlogItem {
 export class BlogComponent implements OnInit {
     blogSet: {
         list: Array<BlogItem>;
+        pageSet: PageSet;
     };
     windowWidth: number;
     constructor(private getBlog: GetBlogInfoService) {
         this.blogSet = {
-            list: []
+            list: [],
+            pageSet: {
+                pageIndex: 0,
+                pageSize: 0,
+                total: 0
+            }
         };
         this.windowWidth = window.screen.width;
     }
@@ -48,6 +59,7 @@ export class BlogComponent implements OnInit {
     private _getPage(_page: number = 1) {
         this.getBlog.getBlogList(_page).subscribe(res => {
             this.blogSet.list = res.result.data;
+            this.blogSet.pageSet = res.result.pageSet;
         });
     }
 }

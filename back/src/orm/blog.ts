@@ -100,7 +100,7 @@ class BlogFunc {
             pageSize : size,
             pageIndex: 0
         };
-        pageSet.pageIndex = pageSet.total / pageSet.pageSize;
+        pageSet.pageIndex = Math.ceil(pageSet.total / pageSet.pageSize);
         return pageSet;
     }
     async delete(id: number) {

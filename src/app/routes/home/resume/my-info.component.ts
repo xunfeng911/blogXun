@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
     styles: [`
         .info-tit {
             padding-left: 2rem;
+            list-style: none;
             > li {
                 padding: .2rem .5rem;
                 font-size: 16px;

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'cs-resume-pro-card',
-  template: `
+    selector: 'cs-resume-pro-card',
+    template: `
     <div class="resume-card-itm">
       <div class="resume-card-itm-tit">{{cardData.exp_name}}</div>
       <ol>
@@ -10,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
       </ol>
     </div>
   `,
-  styles: [`
+    styles: [`
     .resume-card-itm {
       padding: 12px 12px;
       background-color: rgba(233, 166, 108, .2);
@@ -23,7 +23,7 @@ import { Component, OnInit, Input } from '@angular/core';
     }
     .resume-card-itm-li {
       padding: 3px 0;
-      padding-left: 16px;
+      padding-left: 6px;
     }
     @media screen and (max-width: 960px) {
       .resume-card-itm {
@@ -39,6 +39,6 @@ import { Component, OnInit, Input } from '@angular/core';
     }
   `]
 })
-export class ResumeProCardComponent   {
-  @Input() cardData: any;
+export class ResumeProCardComponent {
+    @Input() cardData: any;
 }

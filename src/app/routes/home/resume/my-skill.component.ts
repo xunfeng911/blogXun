@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'cs-my-skill',
-  template: `
+    selector: 'cs-my-skill',
+    template: `
     <div class="skill"  cs-row>
     <cs-time-line [csSpan]="windowWidth >= 960 ? 20 : 24" [csOffset]="windowWidth >= 960 ? 2 : 0" cs-col>
       <cs-time-line-item *ngFor="let itm of skillData; index as i" [xDate]="itm.xdate">
@@ -11,7 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
     </cs-time-line>
   </div>
   `,
-  styles: [`
+    styles: [`
     .skill {
       padding-top: 24px;
       padding-left: 100px;
@@ -25,13 +25,13 @@ import { Component, OnInit, Input } from '@angular/core';
   `]
 })
 export class MySkillComponent implements OnInit {
-  @Input() skillData;
-  windowWidth: number;
-  constructor() {
-    this.windowWidth = window.screen.width;
+    @Input() skillData;
+    windowWidth: number;
+    constructor() {
+        this.windowWidth = window.screen.width;
     }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }
