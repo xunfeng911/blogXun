@@ -13,7 +13,7 @@ export interface BlogItem {
     template: `
         <div class="blog" cs-row>
         <cs-time-line [csSpan]="windowWidth >= 960 ? 20 : 24" [csOffset]="windowWidth >= 960 ? 2 : 0" cs-col>
-            <cs-time-line-item *ngFor="let itm of BlogList; index as i" [xDate]="itm.blogDate">
+            <cs-time-line-item *ngFor="let itm of blogSet.list; index as i" [xDate]="itm.blogDate">
                 <cs-blog-item [data]="item"></cs-blog-item>
             </cs-time-line-item>
             </cs-time-line>
@@ -31,10 +31,14 @@ export interface BlogItem {
     }`]
 })
 export class BlogComponent implements OnInit {
-    BlogList: Array<BlogItem>;
+    blogSet: {
+        list: Array<BlogItem>;
+    };
     windowWidth: number;
     constructor(private getBlog: GetBlogInfoService) {
-        this.BlogList = [];
+        this.blogSet = {
+            list: []
+        };
         this.windowWidth = window.screen.width;
     }
 
@@ -42,6 +46,8 @@ export class BlogComponent implements OnInit {
         this._getPage();
     }
     private _getPage(_page: number = 1) {
-        this.getBlog.getBlogList(_page).subscribe(data => this.BlogList = data);
+        this.getBlog.getBlogList(_page).subscribe(res => {
+            this.blogSet.list = res.result.data;
+        });
     }
 }

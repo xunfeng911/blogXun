@@ -46,7 +46,7 @@ export class TimeLineItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('lastItem', this._lastItem);
+    // console.log('lastItem', this._lastItem);
   }
 
 }

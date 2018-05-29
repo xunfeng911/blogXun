@@ -8,7 +8,7 @@ export class NoopInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       map(event => {
-        console.log(event);
+        // console.log(event);
         if (event instanceof HttpResponse) {
           if (event.status === 401) {
             // JWT expired, go to login

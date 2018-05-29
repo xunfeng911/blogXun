@@ -5,7 +5,6 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
-import { GetInfoService } from './services/get-usr-info.service';
 import { NoopInterceptor } from './intercept/index';
 import { SharedModule } from './shared/share.module';
 import { AppRoutingModule } from './app.routing';
@@ -35,7 +34,6 @@ import { GetBlogInfoService } from './services/get-blog-info.service';
     useClass: NoopInterceptor,
     multi: true,
   },
-    GetInfoService,
     GetBlogInfoService
   ],
   bootstrap: [AppComponent]

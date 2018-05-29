@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { GetInfoService } from '../../services/get-usr-info.service';
+import { ResumeInfo } from '../../../api/api';
 export interface Resume {
-  info: object;
-  experience: Array<object>;
-  product: Array<object>;
+    info: object;
+    experience: Array<object>;
+    product: Array<object>;
 }
 
 @Component({
-  selector: 'cs-resume',
-  // templateUrl: './resume.component.html',
-  template: `
+    selector: 'cs-resume',
+    // templateUrl: './resume.component.html',
+    template: `
     <ul class="resume">
       <li class="resume-li">
         <p>个人信息</p>
@@ -25,19 +25,21 @@ export interface Resume {
       </li>
     </ul>
     `,
-  styleUrls: ['./resume.component.scss']
+    styleUrls: ['./resume.component.scss']
 })
 export class ResumeComponent implements OnInit {
 
-  ResumeData: Resume;
-  constructor(private getInfo: GetInfoService) {
-    this.ResumeData = { info: {}, experience: [], product: [] };
-  }
-
-  ngOnInit() {
-    this._initData();
-  }
-  private _initData() {
-    this.getInfo.getResume().subscribe(data => this.ResumeData = data);
-  }
+    ResumeData: Resume;
+    constructor() {
+        this.ResumeData = {
+            info: {},
+            experience: [],
+            product: []
+        };
+    }
+    ngOnInit() {
+        setTimeout(() => {
+            this.ResumeData = ResumeInfo;
+        }, 0);
+    }
 }

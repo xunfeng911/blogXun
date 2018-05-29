@@ -1,27 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { GetInfoService } from '../../services/get-usr-info.service';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { userInfo } from '../../../api/api';
 
 @Component({
   selector: 'cs-side',
   templateUrl: './side.component.html',
   styleUrls: ['./side.component.scss']
 })
-export class SideComponent implements OnInit {
+export class SideComponent {
   usrData: any;
   windowHeight: number;
-  constructor(
-    private router: Router,
-    private getInfo: GetInfoService) {
-    this.usrData = {};
+  constructor( private router: Router ) {
     this.windowHeight = window.innerHeight;
-  }
-
-  ngOnInit() {
-    this._initData();
-  }
-  private _initData = (): void => {
-    this.getInfo.getUsrInfo().subscribe(data => this.usrData = data);
+    this.usrData = userInfo;
   }
   goRoute() {
     this.router.navigate(['/blog']);
