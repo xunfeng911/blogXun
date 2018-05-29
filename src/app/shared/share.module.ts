@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VisualInDirective } from '../Directive/visual-in.directive';
 import { GridModule } from '../components/grid/grid.module';
+import { TimelineModule } from '../components/time-line/time-line.module';
 @NgModule({
-  imports: [
-    CommonModule,
-    GridModule
-  ],
-  declarations: [
-    VisualInDirective
-  ],
-  exports: [
-    VisualInDirective,
-    GridModule
-  ]
+    imports: [
+        CommonModule,
+        GridModule,
+        TimelineModule
+    ],
+    declarations: [
+    ],
+    exports: [
+        GridModule,
+        TimelineModule
+    ]
 })
 export class SharedModule { }

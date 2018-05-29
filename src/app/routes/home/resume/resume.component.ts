@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResumeInfo } from '../../../api/api';
+import { ResumeInfo } from '../../../../api/api';
 export interface Resume {
     info: object;
     experience: Array<object>;

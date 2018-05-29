@@ -54,9 +54,9 @@ export class VisualInDirective implements OnInit {
         let offsetBodyTop = 0;
         function _getOffsetBodyTop(el) {
             offsetBodyTop += el.offsetTop;
-            if (el.offsetParent.tagName != 'BODY') {
+            if (el.offsetParent.tagName !== 'BODY') {
                 return _getOffsetBodyTop(el.offsetParent);
-            } else if (el.offsetParent.tagName == 'BODY') {
+            } else if (el.offsetParent.tagName === 'BODY') {
                 return false;
             }
         }

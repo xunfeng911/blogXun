@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetBlogInfoService } from '../../services/get-blog-info.service';
+import { GetBlogInfoService } from '../../../core/services/get-blog-info.service';
 
 export interface BlogItem {
     blog_id: number;
