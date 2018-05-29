@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "back:watch": "nodemon --config ./nodemon.json",
-    "back": "ts-node --project tsconfig_back.json ./backend/src/main.ts",
+    "back": "ts-node --project tsconfig_back.json ./back/src/main.ts",
     "prestart:prod": "tsc",
     "start:prod": "node dist/main.js"
   },
