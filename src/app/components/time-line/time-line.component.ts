@@ -39,8 +39,8 @@ export class TimeLineComponent implements AfterContentInit {
                 // const listArray = this._timeLineLists.toArray();
                 // listArray[listArray.length - 1]._lastItem = true;
                 this._timeLineLists.last._lastItem = true;
-                // console.log('ending');
+                console.log('ending');
             }
-        });
+        }, 300);
     }
 }

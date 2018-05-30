@@ -1,5 +1,5 @@
 
-import { Controller, Get, Post, Put, Delete, Req, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Req, Body, Param } from '@nestjs/common';
 import { blogFunc } from '../../orm/blog';
 import { MarkedService } from '../../services/marked/marked.service';
 

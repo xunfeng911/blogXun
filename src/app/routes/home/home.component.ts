@@ -8,10 +8,14 @@ import { myBrowser } from '../../../assets/js/unti';
     template: `
   <div class="home">
   <cs-side class="side" [ngStyle]="sideBorder"></cs-side>
-  <div class="layout">
-    <router-outlet></router-outlet>
-    <div style="text-align: center;">XunFeng ©{{_date}}</div>
-    <div style="text-align: center;">Powered by Angular^6 && Nestjs</div>
+  <div class="layout" [ngStyle]="{'min-height': windowHeight + 'px'}">
+    <section>
+        <router-outlet></router-outlet>
+        <section *ngIf="show">
+            <div style="text-align: center;">XunFeng ©{{_date}}</div>
+            <div style="text-align: center;">Powered by Angular^6 && Nestjs</div>
+        </section>
+    </section>
   </div>
 </div>`,
     styleUrls: ['./home.component.scss']
@@ -19,9 +23,17 @@ import { myBrowser } from '../../../assets/js/unti';
 export class HomeComponent implements OnInit {
     _date: any;
     sideBorder: object;
-    constructor() { }
+    windowHeight: number;
+    show: boolean;
+    constructor() {
+        this.windowHeight = window.screen.availHeight;
+        this.show = false;
+    }
 
     ngOnInit() {
+        setTimeout(() => {
+            this.show = true;
+        }, 1000);
         const _timer = timer(0, 1000);
         _timer.subscribe(t => this._date = moment().format('YYYY-MM-DD hh:mm:ss'));
         const theBrower = myBrowser();

@@ -16,18 +16,20 @@ export interface PageSet {
 @Component({
     selector: 'cs-blog',
     template: `
-        <div class="blog" cs-row>
-        <cs-time-line [csSpan]="windowWidth >= 960 ? 20 : 24" [csOffset]="windowWidth >= 960 ? 2 : 0" cs-col>
-            <cs-time-line-item *ngFor="let itm of blogSet.list; index as i" [xDate]="itm.blogDate">
-                <cs-blog-item [data]="itm"></cs-blog-item>
-            </cs-time-line-item>
+        <div class="blog">
+            <cs-time-line>
+                <cs-time-line-item *ngFor="let itm of blogSet.list; index as i" [xDate]="itm.blogDate">
+                    <cs-blog-item [data]="itm"></cs-blog-item>
+                </cs-time-line-item>
             </cs-time-line>
         </div>
     `,
     styles: [`
     .blog {
+        max-width: 800px;
+        margin-top: 48px;
         padding-top: 24px;
-        padding-left: 160px;
+        padding-left: 140px;
     }
     @media screen and (max-width: 960px) {
         .blog {

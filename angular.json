@@ -28,8 +28,7 @@
               "src/api"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/normalize.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },

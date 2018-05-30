@@ -8,7 +8,6 @@ export interface Resume {
 
 @Component({
     selector: 'cs-resume',
-    // templateUrl: './resume.component.html',
     template: `
     <ul class="resume">
       <li class="resume-li">

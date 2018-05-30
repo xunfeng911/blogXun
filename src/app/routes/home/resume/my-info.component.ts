@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 @Component({
     selector: 'cs-my-info',
     template: `
@@ -31,12 +31,7 @@ import { Component, OnInit, Input } from '@angular/core';
         }
     `],
 })
-export class MyInfoComponent implements OnInit {
+export class MyInfoComponent {
     @Input() infoData;
-
     constructor() { }
-
-    ngOnInit() {
-    }
-
 }

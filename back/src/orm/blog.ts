@@ -16,7 +16,7 @@ export class Blog extends BaseEntity {
     @Column()
     blogViews: number;
 
-    @Column()
+    @Column({ type: 'longtext' })
     blogIntro: string;
 
     @Column({ type: 'longtext' })
