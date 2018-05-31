@@ -9,11 +9,13 @@ import { BlogItem } from './blog.component';
                 {{ data.blogTitle }}
             </div>
             <div class="blog-item-sub">
-                <span>阅读：{{ data.blogViews }}</span>
-                <span>点赞：0</span>
+                <span>view：{{ data.blogViews }}</span>
             </div>
             <div class="blog-item-cont">
                 {{ data.blogIntro }}
+            </div>
+            <div style="text-align: center;">
+                <a class="blog-item-btn">查看全文</a>
             </div>
         </div>
     `,

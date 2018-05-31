@@ -11,7 +11,7 @@ import { myBrowser } from '../../../assets/js/unti';
   <div class="layout" [ngStyle]="{'min-height': windowHeight + 'px'}">
     <section>
         <router-outlet></router-outlet>
-        <section *ngIf="show">
+        <section *ngIf="show" class="footer">
             <div style="text-align: center;">XunFeng ©{{_date}}</div>
             <div style="text-align: center;">Powered by Angular^6 && Nestjs</div>
         </section>

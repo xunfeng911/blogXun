@@ -17,23 +17,31 @@ export interface PageSet {
     selector: 'cs-blog',
     template: `
         <div class="blog">
-            <cs-time-line>
-                <cs-time-line-item *ngFor="let itm of blogSet.list; index as i" [xDate]="itm.blogDate">
-                    <cs-blog-item [data]="itm"></cs-blog-item>
-                </cs-time-line-item>
-            </cs-time-line>
+            <div class="blog-in">
+                <cs-time-line>
+                    <cs-time-line-item *ngFor="let itm of blogSet.list; index as i" [xDate]="itm.blogDate">
+                        <cs-blog-item [data]="itm"></cs-blog-item>
+                    </cs-time-line-item>
+                </cs-time-line>
+            </div>
         </div>
     `,
     styles: [`
     .blog {
-        max-width: 800px;
+        max-width: 800px !important;
         margin-top: 48px;
-        padding-top: 24px;
-        padding-left: 140px;
+        padding: 3rem 5%;
+
+    }
+    .blog-in {
+        padding-left: 100px;
     }
     @media screen and (max-width: 960px) {
         .blog {
-        padding: 42px 24px 0 24px;
+            padding: 42px 24px 0 24px;
+        }
+        .blog-in {
+            padding-left: 0;
         }
     }`]
 })
