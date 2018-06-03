@@ -4,6 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import { hmrBootstrap } from './hmr';
+import { Observable } from 'rxjs';
 
 // if (environment.production) {
 //     enableProdMode();
@@ -26,3 +27,6 @@ if (environment.hmr) {
 } else {
     bootstrap();
 }
+
+
+console.log(Observable.prototype);
