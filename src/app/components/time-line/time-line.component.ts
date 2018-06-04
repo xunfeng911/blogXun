@@ -1,13 +1,13 @@
 import { TimeLineItemComponent } from './time-line-item.component';
 import {
     Component,
-    ContentChild,
-    ViewEncapsulation,
     ContentChildren,
     QueryList,
-    AfterContentInit, TemplateRef,
-    Input
+    AfterContentInit,
+    OnDestroy,
+    AfterContentChecked
 } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'cs-time-line',
@@ -18,29 +18,31 @@ import {
     `,
     styleUrls: ['./time-line.component.scss']
 })
-export class TimeLineComponent implements AfterContentInit {
-    // @Input() fromNow: boolean;
+export class TimeLineComponent implements AfterContentInit, OnDestroy, AfterContentChecked {
+    private timeLineSubscription: Subscription;
     @ContentChildren(TimeLineItemComponent) _timeLineLists: QueryList<TimeLineItemComponent>;
     constructor() { }
-    ngAfterContentInit() {
-        // setTimeout(() => {
-        //   if (this._timeLineLists && this._timeLineLists.length) {
-        //     const listArray = this._timeLineLists.toArray();
-        //     listArray.map(itm => {
-        //       itm._fromNow = this.fromNow;
-        //       console.log('fu:' + itm._fromNow);
-        //     });
-        //   }
-        // });
-        // 不异步不执行...why？？
-        setTimeout(_ => {
-            // console.log(this._timeLineLists);
+    updateChildrenTimeLine(): void {
+        setTimeout(() => {
             if (this._timeLineLists && this._timeLineLists.length) {
-                // const listArray = this._timeLineLists.toArray();
-                // listArray[listArray.length - 1]._lastItem = true;
-                this._timeLineLists.last._lastItem = true;
-                console.log('ending');
+                this._timeLineLists.toArray().forEach((item, index) => item._lastItem = (index === this._timeLineLists.length - 1));
             }
         }, 300);
     }
+    ngAfterContentInit(): void {
+        this.updateChildrenTimeLine();
+    }
+    ngAfterContentChecked(): void {
+        if (this._timeLineLists) {
+            this.timeLineSubscription = this._timeLineLists.changes.subscribe(() => {
+                this.updateChildrenTimeLine();
+            });
+        }
+    }
+    ngOnDestroy(): void {
+        if (this.timeLineSubscription) {
+          this.timeLineSubscription.unsubscribe();
+          this.timeLineSubscription = null;
+        }
+      }
 }

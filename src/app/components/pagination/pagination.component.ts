@@ -9,16 +9,12 @@ import {
     ViewChild
 } from '@angular/core';
 
-import { Subscription } from 'rxjs';
-
 @Component({
     selector: 'cs-pagination',
     preserveWhitespaces: false,
     templateUrl: './pagination.component.html'
 })
 export class PaginationComponent implements OnInit, OnDestroy {
-    private i18n$: Subscription;
-    locale: {} = {};
     @ViewChild('renderItemTemplate') private _itemRender: TemplateRef<{ $implicit: 'page' | 'prev' | 'next', page: number }>;
     private _showSizeChanger = false;
     private _showQuickJumper = false;
@@ -30,11 +26,11 @@ export class PaginationComponent implements OnInit, OnDestroy {
     private _pageIndex = 1;
     firstIndex = 1;
     pages = [];
-    @Input() nzShowTotal: TemplateRef<{ $implicit: number, range: [number, number] }>;
-    @Input() nzInTable = false;
-    @Input() nzSize: string;
-    @Output() nzPageSizeChange: EventEmitter<number> = new EventEmitter();
-    @Output() nzPageIndexChange: EventEmitter<number> = new EventEmitter();
+    @Input() showTotal: TemplateRef<{ $implicit: number, range: [number, number] }>;
+    @Input() inTable = false;
+    @Input() size: string;
+    @Output() pageSizeChange: EventEmitter<number> = new EventEmitter();
+    @Output() pageIndexChange: EventEmitter<number> = new EventEmitter();
 
     constructor() { }
 
