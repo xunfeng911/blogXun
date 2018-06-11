@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BlogItem } from './blog.component';
 
 @Component({
@@ -21,13 +21,10 @@ import { BlogItem } from './blog.component';
     `,
     styleUrls: ['./blog-item.component.scss']
 })
-export class BlogItemComponent implements OnInit {
+export class BlogItemComponent {
     @Input() data: BlogItem;
     windowWidth: number;
     constructor() {
         this.windowWidth = window.screen.width;
-    }
-    ngOnInit() {
-        console.log(this.data);
     }
 }

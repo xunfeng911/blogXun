@@ -24,6 +24,16 @@ export interface PageSet {
                     </cs-time-line-item>
                 </cs-time-line>
             </div>
+            <cs-pagination
+                [itemRender]="renderItemTemplate"
+                [pageSize]="10"
+                [total]="100">
+            </cs-pagination>
+            <ng-template #renderItemTemplate let-type let-page="page">
+                <a *ngIf="type==='pre'">Previous</a>
+                <a *ngIf="type==='next'">Next</a>
+                <a *ngIf="type==='page'">{{page}}</a>
+            </ng-template>
         </div>
     `,
     styles: [`
