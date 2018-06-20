@@ -70,13 +70,13 @@ class BlogFunc {
     }
 
     async list(page: number = 1, size: number = 5) {
-        const pageSet = await this.getPageSet(size);
+        const pageSet = await this.getPageSet(page, size);
         let data = await getRepository(Blog)
             .createQueryBuilder('blog')
-            .orderBy('blogId')
+            .orderBy('blog.blogId', 'DESC')
             .leftJoinAndSelect('blog.tags', 'tag')
-            .offset((page - 1) * size)
-            .limit(size)
+            .skip((page - 1) * size)
+            .take(size)
             .getMany();
         data = data.map(itm => {
             delete itm.blogCont;
@@ -94,13 +94,13 @@ class BlogFunc {
             .execute();
     }
 
-    async getPageSet(size: number = 5) {
+    async getPageSet(page: number = 1, size: number = 5) {
         const pageSet = {
             total    : await Blog.count(),
             pageSize : size,
-            pageIndex: 0
+            pageIndex: page
         };
-        pageSet.pageIndex = Math.ceil(pageSet.total / pageSet.pageSize);
+        // pageSet.pageIndex = Math.ceil(pageSet.total / pageSet.pageSize);
         return pageSet;
     }
     async delete(id: number) {

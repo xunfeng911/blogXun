@@ -36,7 +36,7 @@ export class BlogsController {
         // res.status(HttpStatus.CREATED).send({data: b});
     }
 
-    @Get('/list/:page')
+    @Get('/list/:size/:page')
     async getBlogListByPage(@Param() params) {
         return await blogFunc.list(params.page, params.size || 5);
     }

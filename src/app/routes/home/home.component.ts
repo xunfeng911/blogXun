@@ -9,12 +9,12 @@ import { myBrowser } from '../../../assets/js/unti';
   <div class="home">
   <cs-side class="side" [ngStyle]="sideBorder"></cs-side>
   <div class="layout" [ngStyle]="{'min-height': windowHeight + 'px'}">
-    <section>
+    <section class="route">
         <router-outlet></router-outlet>
-        <section *ngIf="show" class="footer">
-            <div style="text-align: center;">XunFeng ©{{_date}}</div>
-            <div style="text-align: center;">Powered by Angular^6 && Nestjs</div>
-        </section>
+    </section>
+    <section *ngIf="show" class="footer">
+        <div style="text-align: center;">XunFeng ©{{_date}}</div>
+        <div style="text-align: center;">Powered by Angular^6 && Nestjs</div>
     </section>
   </div>
 </div>`,

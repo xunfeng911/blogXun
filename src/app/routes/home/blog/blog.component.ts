@@ -24,12 +24,16 @@ export interface PageSet {
                     </cs-time-line-item>
                 </cs-time-line>
             </div>
-            <cs-pagination
-                *ngIf="blogSet.list"
-                [showTotal]="rangeTemplate"
-                [pageIndex]="1"
-                [total]="100">
-            </cs-pagination>
+            <div class="blog-page">
+                <cs-pagination
+                    *ngIf="blogSet.list"
+                    (pageIndexChange)="_getPage($event)"
+                    [showTotal]="rangeTemplate"
+                    [pageSize]="blogSet.pageSet.pageSize"
+                    [(pageIndex)]="blogSet.pageSet.pageIndex"
+                    [total]="blogSet.pageSet.total">
+                </cs-pagination>
+            </div>
             <ng-template #rangeTemplate let-range="range" let-total>
                 {{range[0]}}-{{range[1]}} of {{total}} items
             </ng-template>
@@ -42,7 +46,7 @@ export interface PageSet {
     `,
     styles: [`
     .blog {
-        max-width: 800px !important;
+        min-width: 800px;
         margin-top: 48px;
         padding: 3rem 5%;
 
@@ -50,8 +54,13 @@ export interface PageSet {
     .blog-in {
         padding-left: 100px;
     }
+    .blog-page {
+        margin-top: 42px;
+        text-align: center;
+    }
     @media screen and (max-width: 960px) {
         .blog {
+            min-width: 10px;
             padding: 42px 24px 0 24px;
         }
         .blog-in {

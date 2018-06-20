@@ -18,9 +18,19 @@
 .layout {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     padding-left: 385px;
     background: #fff;
     overflow: scroll;
+    > .route {
+        width: calc(100% - 120px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    > .footer {
+        width: 100%;
+    }
 }
 @media screen and (min-width: 961px) {
     .footer {
@@ -46,5 +56,9 @@
     display: block;
     padding-left: 0;
     width: auto;
+    > .route {
+        width: auto;
+        display: block;
+    }
   }
 }
