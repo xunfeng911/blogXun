@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { GetBlogInfoService } from '../../../core/services/get-blog-info.service';
 
 export interface BlogItem {
-    blog_id: number;
-    blog_title: string;
-    blog_date: Date;
-    blog_views: number;
-    blog_intro: string;
+    blogId: number;
+    blogTitle: string;
+    blogDate: Date;
+    blogViews: number;
+    blogIntro: string;
 }
 export interface PageSet {
     pageIndex: number;
@@ -25,10 +25,14 @@ export interface PageSet {
                 </cs-time-line>
             </div>
             <cs-pagination
-                [itemRender]="renderItemTemplate"
-                [pageSize]="10"
+                *ngIf="blogSet.list"
+                [showTotal]="rangeTemplate"
+                [pageIndex]="1"
                 [total]="100">
             </cs-pagination>
+            <ng-template #rangeTemplate let-range="range" let-total>
+                {{range[0]}}-{{range[1]}} of {{total}} items
+            </ng-template>
             <ng-template #renderItemTemplate let-type let-page="page">
                 <a *ngIf="type==='pre'">Previous</a>
                 <a *ngIf="type==='next'">Next</a>
@@ -63,7 +67,7 @@ export class BlogComponent implements OnInit {
     windowWidth: number;
     constructor(private getBlog: GetBlogInfoService) {
         this.blogSet = {
-            list: [],
+            list: null,
             pageSet: {
                 pageIndex: 0,
                 pageSize: 0,

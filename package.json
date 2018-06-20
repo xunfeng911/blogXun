@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --hmr --host=xun.com --port=3040",
-    "build": "ng build --prod --build-optimizer",
+    "build": "ng build --prod --build-optimizer --vendor-chunk",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

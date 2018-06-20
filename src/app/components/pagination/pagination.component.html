@@ -1,101 +1,74 @@
-<ng-template #renderItemTemplate let-type let-page="page">
-    <a class="ant-pagination-item-link" *ngIf="type!='page'"></a>
-    <a *ngIf="type=='page'">{{page}}</a>
-</ng-template>
-// 单页并且总数大于页数，或者不为单页
+
+<!--  单页并且总数大于页数，或者不为单页 -->
 <ng-container  *ngIf="(hideOnSinglePage&&(total>pageSize))||!hideOnSinglePage">
-    // 简单模式
-    <ul
-        *ngIf="simple"
-        class="ant-pagination ant-pagination-simple">
-        <li
-            title="prev"
-            class="ant-pagination-prev"
-            (click)="jumpPreOne()"
-            [class.ant-pagination-disabled]="isFirstIndex">
-            <ng-template [ngTemplateOutlet]="itemRender" [ngTemplateOutletContext]="{ $implicit: 'pre'}"></ng-template>
-        </li>
-        <li [attr.title]="pageIndex+'/'+lastIndex" class="ant-pagination-simple-pager">
-          <input
-            #simplePagerInput
-            [ngModel]="pageIndex"
-            (keydown.enter)="handleKeyDown($event,simplePagerInput,false)"
-            size="3">
-          <span class="ant-pagination-slash">／</span>
-          {{ lastIndex }}
-        </li>
-        <li
-          title="next"
-          class="ant-pagination-next"
-          (click)="jumpNextOne()"
-          [class.ant-pagination-disabled]="isLastIndex">
-          <ng-template [ngTemplateOutlet]="nzItemRender" [ngTemplateOutletContext]="{ $implicit: 'next'}"></ng-template>
-        </li>
-    </ul>
-    // 正常模式
     <ul
         *ngIf="!nzSimple"
-        [class.mini]="nzSize=='small'"
-        class="ant-pagination">
-        // 总数
-        <span class="ant-pagination-total-text" *ngIf="showTotal">
+        class="pagination">
+         <!-- 总数 -->
+        <span class="pagination-total-text" *ngIf="showTotal">
             <ng-template
                 [ngTemplateOutlet]="showTotal"
-                [ngTemplateOutletContext]="{ $implicit: total,range:[(pageIndex-1)*pageSize+1,pageIndex*pageSize] }">
+                [ngTemplateOutletContext]="{ $implicit: total, range:[(pageIndex-1)*pageSize+1,pageIndex*pageSize] }">
             </ng-template>
         </span>
-        // prev
+        <!-- prev -->
         <li
             title="prev"
-            class="ant-pagination-prev"
-            (click)="jumpPreOne()"
-            [class.ant-pagination-disabled]="isFirstIndex">
+            class="pagination-prev"
+            (click)="jumpPre()"
+            [class.pagination-disabled]="isFirstIndex">
             <ng-template [ngTemplateOutlet]="itemRender" [ngTemplateOutletContext]="{ $implicit: 'pre'}"></ng-template>
         </li>
-        // first
+        <!-- first -->
         <li
             [attr.title]="firstIndex"
-            class="ant-pagination-item"
+            class="pagination-item"
             (click)="jumpPage(firstIndex)"
-            [class.ant-pagination-item-active]="isFirstIndex">
+            [class.pagination-item-active]="isFirstIndex">
             <ng-template [ngTemplateOutlet]="itemRender" [ngTemplateOutletContext]="{ $implicit: 'page',page: firstIndex }"></ng-template>
         </li>
         <li
             [attr.title]="'prev_5'"
             (click)="jumpPreFive()"
-            class="ant-pagination-jump-prev"
+            class="pagination-jump-prev"
             *ngIf="(lastIndex >9)&&(pageIndex-3>firstIndex)">
             <a></a>
         </li>
         <li
             *ngFor="let page of pages"
             [attr.title]="page.index"
-            class="ant-pagination-item"
+            class="pagination-item"
             (click)="jumpPage(page.index)"
-            [class.ant-pagination-item-active]="pageIndex==page.index">
+            [class.pagination-item-active]="pageIndex==page.index">
             <ng-template [ngTemplateOutlet]="itemRender" [ngTemplateOutletContext]="{ $implicit: 'page',page: page.index }"></ng-template>
         </li>
         <li
             [attr.title]="next_5"
             (click)="jumpNextFive()"
-            class="ant-pagination-jump-next"
+            class="pagination-jump-next"
             *ngIf="(lastIndex >9)&&(pageIndex+3<lastIndex)">
             <a></a>
         </li>
         <li
             [attr.title]="lastIndex"
-            class="ant-pagination-item"
+            class="pagination-item"
             (click)="jumpPage(lastIndex)"
             *ngIf="(lastIndex>0)&&(lastIndex!==firstIndex)"
-            [class.ant-pagination-item-active]="isLastIndex">
+            [class.pagination-item-active]="isLastIndex">
             <ng-template [ngTemplateOutlet]="itemRender" [ngTemplateOutletContext]="{ $implicit: 'page',page: lastIndex }"></ng-template>
         </li>
         <li
             title="next"
-            class="ant-pagination-next"
-            (click)="jumpNextOne()"
-            [class.ant-pagination-disabled]="isLastIndex">
+            class="pagination-next"
+            (click)="jumpNext()"
+            [class.pagination-disabled]="isLastIndex">
             <ng-template [ngTemplateOutlet]="itemRender" [ngTemplateOutletContext]="{ $implicit: 'next'}"></ng-template>
         </li>
     </ul>
 </ng-container>
+
+<ng-template #renderItemTemplate let-type let-page="page">
+    <a class="pagination-item-page" *ngIf="type=='page'">{{page}}</a>
+    <a class="pagination-item-link" *ngIf="type=='pre'">上一页</a>
+    <a class="pagination-item-link" *ngIf="type=='next'">下一页</a>
+</ng-template>

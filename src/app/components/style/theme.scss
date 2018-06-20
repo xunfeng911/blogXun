@@ -1,0 +1,17 @@
+$font-family-no-number  : "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family            : "Monospaced Number", $font-family-no-number;
+$font-size-base         : 14px;
+$line-height-base       : 1.5;
+$text-color             :rgba(0,0,0, .65);
+
+
+$border-radius-base     : 4px;
+$border-width-base      : 1px; 
+$border-style-base      : solid;
+
+$component-background   : #fff;
+$primary-color          : rgb(233, 166, 108);;
+$primary-color-hover    : rgba($primary-color, .8);
+// $primary-color-base     : #ecd8bd;
+$primary-color-base     : #aaa;
+$isabled-color          : #ddd;

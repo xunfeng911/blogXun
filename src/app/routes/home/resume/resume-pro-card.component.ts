@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector: 'cs-resume-pro-card',
+    encapsulation: ViewEncapsulation.None,
     template: `
     <div class="resume-card-itm">
       <div class="resume-card-itm-tit">{{cardData.exp_name}}</div>
@@ -24,6 +25,14 @@ import { Component, OnInit, Input } from '@angular/core';
     .resume-card-itm-li {
       padding: 3px 0;
       padding-left: 6px;
+    }
+    .resume-card-itm-li > a {
+        color: #e9a66c;
+        font-size: 16px;
+        font-weight: 600;
+        &:hover {
+            color: rgba(#e9a66c, .8);
+        }
     }
     @media screen and (max-width: 960px) {
       .resume-card-itm {
