@@ -1,6 +1,10 @@
 .resume {
   padding: 3rem 5%;
   max-width: 667px;
+  width: 100%;
+}
+:host {
+  width: 100%;
 }
 .resume-li {
   padding-bottom: 1rem;

@@ -1,5 +1,4 @@
 import { Directive, ElementRef, HostListener, HostBinding, OnInit } from '@angular/core';
-import { _sanitizeHtml } from '@angular/core/src/sanitization/html_sanitizer';
 
 @Directive({
     selector: '[csVisualIn]'
